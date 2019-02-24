@@ -1,0 +1,70 @@
+AllCops:
+  DisplayCopNames: yes
+  TargetRubyVersion: 2.5
+  Exclude:
+    - "bin/*"
+    - "db/**/*"
+    - "app/mailers/**/*"
+    - "config/**/*"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
+    - Gemfile*
+    - "\\.*"
+
+# disables
+Bundler/OrderedGems: { Enabled: no }
+Lint/AmbiguousRegexpLiteral: { Enabled: no }
+Lint/UnusedMethodArgument: { Enabled: no } # unreliable with keyword arguments
+Lint/UselessAccessModifier: { Enabled: no }
+Metrics: { Enabled: no }
+Naming/AccessorMethodName: { Enabled: no }
+Naming/HeredocDelimiterNaming: { Enabled: no }
+Naming/PredicateName: { Enabled: no }
+Naming/VariableNumber: { Enabled: no }
+Rails: { Enabled: no }
+Style/AccessModifierDeclarations: { Enabled: no }
+Style/Alias: { Enabled: no }
+Style/AsciiComments: { Enabled: no }
+Style/BracesAroundHashParameters: { Enabled: no }
+Style/ClassAndModuleChildren: { Enabled: no }
+Style/CommentedKeyword: { Enabled: no }
+Style/DateTime: { Enabled: no } # don't want to risk bugs caused by subtle semantic differences here
+Style/Documentation: { Enabled: no }
+Style/DoubleNegation: { Enabled: no }
+Style/FormatString: { Enabled: no }
+Style/FormatStringToken: { Enabled: no }
+Style/FrozenStringLiteralComment: { Enabled: no }
+Style/GuardClause: { Enabled: no }
+Style/IfUnlessModifier: { Enabled: no }
+Style/NumericPredicate: { Enabled: no }
+Style/PreferredHashMethods: { Enabled: no } # tries to use .has_key? for ActiveModel::Errors and other hash-like objects
+Style/RedundantParentheses: { Enabled: no } # cause infinite correction loop in some cases.
+Style/RegexpLiteral: { Enabled: no }
+Style/SingleLineBlockParams: { Enabled: no }
+Naming/UncommunicativeMethodParamName: { Enabled: no }
+Naming/MemoizedInstanceVariableName: { Enabled: no }
+Layout/AlignHash: { Enabled: no }
+Layout/ClosingParenthesisIndentation: { Enabled: no }
+Layout/RescueEnsureAlignment: { Enabled: no }
+# TODO: can enable it after upgrading Ruby to >= 2.4.5
+Performance/RegexpMatch: { Enabled: no }
+
+# customizations
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: space
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Layout/IndentHash:
+  EnforcedStyle: consistent
+Style/EmptyElse:
+  EnforcedStyle: empty
+Style/ClassCheck:
+  EnforcedStyle: kind_of?
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
