@@ -1,0 +1,9 @@
+default: &default
+  adapter: postgresql
+  
+test:
+  <<: *default
+  database: file_easy_test
+  username: postgres
+  encoding: utf8
+  
