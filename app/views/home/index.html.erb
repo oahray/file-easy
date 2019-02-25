@@ -1,0 +1,13 @@
+<% if current_user %>
+  
+  <h1>File Easy</h1>
+  <%= link_to "View uploads", uploads_path %>
+<% else %>
+  <p>You are not logged in</p>
+  <%= link_to "Sign Up", signup_path %> or 
+  <%= link_to "Log In", login_path %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+

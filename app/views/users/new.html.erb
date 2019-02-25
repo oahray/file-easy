@@ -1,5 +1,6 @@
 <h1>Sign up</h1>
 
-<%= render 'form', user: @user %>
+<%= render 'signup_form', user: @user %>
 
-<%= link_to 'Back', root_path %>
+<p>Already have an account? <%= link_to 'Login', login_path %> </p>
+<p><%= link_to 'Back to Home', root_path %><p/>
