@@ -1,13 +1,15 @@
-<% if current_user %>
-  
-  <h1>File Easy</h1>
-  <%= link_to "View uploads", uploads_path %>
-<% else %>
-  <p>You are not logged in</p>
-  <%= link_to "Sign Up", signup_path %> or 
-  <%= link_to "Log In", login_path %>
-<% end %>
+<div class="landing-main">
+  <div class="welcome-text">
+    <h1>Welcome to File Easy</h1>
+    <p>Backing up and sharing files have never been this easy</p>
+  </div>
 
-<p id="notice"><%= notice %></p>
+  <div class="d-flex justify-content-center"><img class="landing-image image-fluid" src="https://i1.wp.com/blog.gonitro.com/wp-content/uploads/2015/09/College-Document-Sharing.gif?" /></div>
 
+  <div class="join-options">
+    <%= link_to "Sign Up", signup_path %> or 
+    <%= link_to "Log In", login_path %> to continue
+  <div>
 
+  <div class="landing-background"></div>
+</div>

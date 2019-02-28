@@ -1,0 +1,5 @@
+<% unless file.previewable? %>
+  <%= link_to image_tag(icon_path(file), size: 80, class: "mr-3", alt: "File"), rails_blob_path(file, disposition: 'preview')%>
+<% else %>
+  <%= image_tag icon_path(file), size: 80, class: "mr-3", alt: "file" %>
+<% end %>

@@ -1,5 +1,12 @@
-<h1>New Upload</h1>
+<div class="new-upload-page page-container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "My Uploads", uploads_path%></li>
+    <li class="breadcrumb-item active"> New Upload </li>
+  </ol>
 
-<%= render 'form', upload: @upload %>
+  <h1>New Upload</h1>
 
-<%= link_to 'Back', uploads_path %>
+  <div class="new-upload-form">
+    <%= render 'form', upload: @upload %>
+  </div>
+</div>

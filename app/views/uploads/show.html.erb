@@ -1,0 +1,35 @@
+<div class="upload-details-page page-container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "My Uploads", uploads_path%></li>
+    <li class="breadcrumb-item active"><%= @upload.name %></li>
+  </ol>
+
+  <div class="uploads-page-content">
+    <div class="uploads-info-bar">
+      <h2><%= @upload.name %>
+        <span class="float-right" data-toggle="tooltip"
+        data-placement="bottom" title="Upload new files"><%= link_to '<i class="fas fa-folder-plus"></i>'.html_safe, edit_upload_path(@upload) %></span>
+      </h2>
+      <p>Description: <%= @upload.about %></p>
+      <p>
+        <small class="text-muted"> Created at </small>
+        <%= @upload.created_at.strftime("%-I:%M %P (%B %m, %Y)") %> <small class="text-muted"> and last updated at </small><%= @upload.updated_at.strftime("%-I:%M %P (%B %m, %Y)") %>
+      </p>
+    </div>
+
+    <div class="uploaded-files-list d-flex flex-wrap p-2">
+      <% @upload.files.each do |file| %>
+        <div class="media upload-list-file-container">
+          <%= render 'file_image', file: file %>
+
+          <div class="media-body align-self-center">
+            <p class="mt-0 mb-1"><%= file.blob.filename.instance_variable_get(:@filename) %></p>
+            
+            <%= link_to "download", file, download: file%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+</div>

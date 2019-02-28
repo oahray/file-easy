@@ -1,0 +1,27 @@
+<div class="edit-upload-page page-container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "My Uploads", uploads_path%></li>
+    <li class="breadcrumb-item"><%= link_to @upload.name, @upload %></li>
+    <li class="breadcrumb-item active"> Edit Collection </li>
+  </ol>
+
+  <h2>Edit Collection</h2>
+  <div class="edit-upload-page-content d-flex  justify-content-around">
+    <div class="edit-upload-form">
+      <%= render 'form', upload: @upload %>
+    </div>
+
+    <div class="existing-files-container container">
+      <p>Existing files for this collection</p>
+
+      <div class="existing-files d-flex flex-wrap">
+        <% @upload.files.each do |file| %>
+          <span style="width: 85px; height: 85px"; data-toggle="tooltip"
+          data-placement="bottom" title=<%= file.blob.filename.instance_variable_get(:@filename).split(" ").join("_") %> >
+            <%= render 'file_image', file: file %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

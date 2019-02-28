@@ -1,72 +1,64 @@
 class UploadsController < ApplicationController
-  before_action :confirm_session
+  before_action :reroute_invalid_session
   before_action :set_upload, only: %i[show edit update destroy]
+  before_action :confirm_files_attached, only: %i[create]
 
-  # GET /uploads
-  # GET /uploads.json
   def index
     @uploads = Upload.all
   end
 
-  # GET /uploads/1
-  # GET /uploads/1.json
   def show; end
 
-  # GET /uploads/new
   def new
     @upload = current_user.uploads.new
   end
 
-  # GET /uploads/1/edit
   def edit; end
 
-  # POST /uploads
-  # POST /uploads.json
   def create
-    @upload = Upload.new(upload_params)
+    @upload = current_user.uploads.new(upload_params)
 
-    respond_to do |format|
-      if @upload.save
-        format.html { redirect_to @upload, notice: "Upload was successfully created." }
-        format.json { render :show, status: :created, location: @upload }
-      else
-        format.html { render :new }
-        format.json { render json: @upload.errors, status: :unprocessable_entity }
+    if @upload.created?
+      if @upload.files.attached?
+        flash[:success] = "Upload successful."
+        redirect_to @upload
       end
+    else
+      render :new
+      flash[:error] = @upload.errors.full_messages.to_sentence
     end
   end
 
-  # PATCH/PUT /uploads/1
-  # PATCH/PUT /uploads/1.json
   def update
-    respond_to do |format|
-      if @upload.update(upload_params)
-        format.html { redirect_to @upload, notice: "Upload was successfully updated." }
-        format.json { render :show, status: :ok, location: @upload }
-      else
-        format.html { render :edit }
-        format.json { render json: @upload.errors, status: :unprocessable_entity }
-      end
+    if @upload.updated?(upload_params)
+      redirect_to @upload
+      flash[:success] = "Upload was successfully updated."
+    else
+      redirect_to edit_uploads_path(@upload)
+      flash[:warning] = @upload.errors.full_messages.to_sentence
     end
   end
 
-  # DELETE /uploads/1
-  # DELETE /uploads/1.json
   def destroy
     @upload.destroy
-    respond_to do |format|
-      format.html { redirect_to uploads_url, notice: "Upload was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to uploads_url
+    flash[:success] = "Upload was successfully destroyed."
   end
 
   private
 
   def set_upload
-    @upload = Upload.find(params[:id])
+    @upload = current_user.uploads.find(params[:id])
   end
 
   def upload_params
-    params.fetch(:upload, {})
+    params.require(:upload).permit(:name, :about, files: [])
+  end
+
+  def confirm_files_attached
+    unless upload_params[:files].present?
+      redirect_to new_upload_path
+      flash[:warning] = "No files attached for upload!"
+    end
   end
 end

@@ -1,17 +1,19 @@
-<%= form_with(model: upload, local: true) do |form| %>
-  <% if upload.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
+<div class="upload-form form">
+  <%= form_with(model: upload, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
 
-      <ul>
-      <% upload.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_field :about %>
+    </div>
+
+    <%= form.file_field :files, multiple:true, direct_upload: true %>
+
+    <div class="actions">
+      <%= submit_tag "Upload files" %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

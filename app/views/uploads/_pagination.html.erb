@@ -1,0 +1,13 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <% total_pages.times do |page| %>
+      <% if page == current_page - 1 %>
+        <li class="page-item active"><a class="page-link" href="#"><%= page + 1 %></a></li>
+      <% else %>
+        <li class="page-item"><a class="page-link" href="#"><%= page + 1 %></a></li>
+      <% end %>
+    <% end %>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>

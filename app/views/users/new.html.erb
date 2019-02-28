@@ -1,6 +1,18 @@
-<h1>Sign up</h1>
+<div class="page-container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Home", root_url%></li>
+    <li class="breadcrumb-item active">Signup</li>
+  </ol>
 
-<%= render 'signup_form', user: @user %>
+  <div class="signup-page page-content">
+    <h1>Sign up</h1>
 
-<p>Already have an account? <%= link_to 'Login', login_path %> </p>
-<p><%= link_to 'Back to Home', root_path %><p/>
+    <div class="form auth-form signup-form">
+      <%= render 'signup_form', user: @user %>
+    <div>
+
+    <p>Already have an account? <%= link_to 'Login', login_path %> </p>
+  </div>
+
+  <div class="landing-background"></div>
+</div>

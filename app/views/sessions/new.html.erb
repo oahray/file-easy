@@ -1,15 +1,30 @@
-<p id=”alert”><%= alert %></p>
-<h1>Login</h1>
-<%= form_tag sessions_path do |form| %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
+<div class="page-container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Home", root_url%></li>
+    <li class="breadcrumb-item active">Login</li>
+  </ol>
+
+  <div class="login-page page-content">
+    <h1>Login</h1>
+
+    <div class="form auth-form signup-form">
+      <%= form_tag sessions_path do |form| %>
+        <div class="field">
+          <%= label_tag :email %>
+          <%= text_field_tag :email %>
+        </div>
+        <div class="field">
+          <%= label_tag :password %>
+          <%= password_field_tag :password %>
+        </div>
+        <div class="actions">
+          <%= submit_tag "Login" %>
+        </div>
+      <% end %>
+
+      <p>Do not have an account? <%= link_to 'Sign up', signup_path %> </p>
+    </div>
   </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
-<% end %>
+</div>
+
+<div class="landing-background"></div>
