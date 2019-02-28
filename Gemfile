@@ -33,9 +33,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Use Image Processing
 gem 'image_processing', '~> 1.2'
-gem 'streamio-ffmpeg'
-# Use sweet alert
-gem 'sweetalert2'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'

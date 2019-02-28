@@ -17,13 +17,13 @@
       </p>
     </div>
 
-    <div class="d-flex flex-wrap p-2">
+    <div class="uploaded-files-list d-flex flex-wrap p-2">
       <% @upload.files.each do |file| %>
         <div class="media upload-list-file-container">
           <%= render 'file_image', file: file %>
 
           <div class="media-body align-self-center">
-            <p class="mt-0 mb-1"><%= file.blob.filename %></p>
+            <p class="mt-0 mb-1"><%= file.blob.filename.instance_variable_get(:@filename) %></p>
             
             <%= link_to "download", file, download: file%>
           </div>

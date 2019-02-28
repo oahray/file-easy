@@ -17,7 +17,7 @@
       <div class="existing-files d-flex flex-wrap">
         <% @upload.files.each do |file| %>
           <span style="width: 85px; height: 85px"; data-toggle="tooltip"
-          data-placement="bottom" title=<%= file.blob.filename.to_s%> >
+          data-placement="bottom" title=<%= file.blob.filename.instance_variable_get(:@filename).split(" ").join("_") %> >
             <%= render 'file_image', file: file %>
           </span>
         <% end %>

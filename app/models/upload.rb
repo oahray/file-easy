@@ -18,10 +18,21 @@ class Upload < ApplicationRecord
     end
   end
 
-
   private
 
-  def sanitize_list; end
+  def sanitize_list
+    return if files.size < 2
+
+    file_set = {}
+
+    files.each do |file|
+      check = file.blob.checksum
+
+      file.purge if file_set[check].present?
+
+      file_set[check] = file.blob
+    end
+  end
 
   def detach_files
     files.purge

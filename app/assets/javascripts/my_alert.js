@@ -1,34 +1,49 @@
-//Override the default confirm dialog by rails
-$('.alert').alert()
-
-$.rails.allowAction = function(link){
-  if (link.data("confirm") == undefined){
-    return true;
+(function() {
+  var handleConfirm = function(element) {
+    if (!allowAction(this)) {
+      Rails.stopEverything(element)
+    }
   }
-  $.rails.showConfirmationDialog(link);
-  return false;
-}
 
-//User click confirm button
-$.rails.confirmed = function(link){
-  link.data("confirm", null);
-  link.trigger("click.rails");
-}
+  var allowAction = function(element) {
+    if (element.getAttribute('data-confirm-swal') === null) {
+      return true
+    }
 
-//Display the confirmation dialog
-$.rails.showConfirmationDialog = function(link){
-  var message = link.data("confirm");
-  swal({
-    title: message,
-    type: 'warning',
-    confirmButtonText: 'Sure',
-    confirmButtonColor: '#2acbb3',
-    showCancelButton: true
-  }).then(function(e){
-    $.rails.confirmed(link);
-  });
-};
+    showConfirmationDialog(element)
+    return false
+  }
 
-$(() => {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+  // Display the confirmation dialog
+  var showConfirmationDialog = function(element) {
+    var message = element.getAttribute('data-confirm-swal')
+    var text = element.getAttribute('data-text')
+
+    swal({
+      title: message || 'Are you sure?',
+      text: text || '',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel',
+    }).then(function(result) {
+      confirmed(element, result)
+    })
+  }
+
+  var confirmed = function(element, result) {
+    if (result.value) {
+      // User clicked confirm button
+      element.removeAttribute('data-confirm-swal')
+      element.click()
+    }
+  }
+
+  // Hook the event before the other rails events so it works togeter
+  // with `method: :delete`.
+  // See https://github.com/rails/rails/blob/master/actionview/app/assets/javascripts/rails-ujs/start.coffee#L69
+  document.addEventListener('rails:attachBindings', function(e) {
+    Rails.delegate(document, 'a[data-confirm-swal]', 'click', handleConfirm)
+  })
+
+}).call(this)

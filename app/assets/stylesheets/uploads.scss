@@ -75,6 +75,11 @@ ol.breadcrumb {
   }
 }
 
+.uploaded-files-list {
+  max-height: 63vh;
+  overflow-y: auto;
+}
+
 .card {
   margin: 10px;
   background-color: lightgrey;

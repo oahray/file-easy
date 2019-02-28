@@ -4,7 +4,6 @@ module UploadHelper
   end
 
   def icon_path(file)
-    puts "#{file.blob.filename} >>>>>> #{file.content_type}"
     case file.content_type
     when "image/jpeg" then file
     when "image/png" then file
@@ -14,4 +13,4 @@ module UploadHelper
     else "/assets/file-icon.png"
     end
   end
-
+end
