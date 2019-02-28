@@ -1,0 +1,32 @@
+<div class="card" style="width: 15rem;">
+  <%= image_tag icon_path(upload.files.first),
+  class: "card-img-top img-thumbnail img-fluid", alt: "Card image cap" %>
+
+  <div class="card-body">
+    <p class="card-title">
+      <small class="text-muted">Collection name: </small> <%= upload.name %>
+    </p>
+    <p class="card-text">
+    <small class="text-muted">Description: </small> 
+    <% if upload.about %>
+      <%= upload.about %>
+    <% else %>
+      This upload has no description.
+    <% end %>
+    </p>
+
+    <hr/>
+
+    <div class="card-actions d-flex flex-wrap justify-content-around">
+      <span data-toggle="tooltip" 
+      data-placement="bottom" title="View uploaded files in this collection">
+        <%= link_to "#{upload.files&.size} files", upload, class: "btn btn-primary" %>
+      </span>
+      
+      <span data-toggle="tooltip" 
+      data-placement="bottom" title="Delete this collection">
+        <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, upload, method: :delete, data: { confirm: 'Are you sure? This cannot be undone' }, class: "btn btn-small btn-danger float-right" %>
+      </span>
+    </div>
+  </div>
+</div>

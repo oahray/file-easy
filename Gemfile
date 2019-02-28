@@ -13,6 +13,9 @@ gem 'puma', '~> 3.11'
 gem "figaro"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# JQuery and bootstrap
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -28,9 +31,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 #Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+# Use Image Processing
+gem 'image_processing', '~> 1.2'
+gem 'streamio-ffmpeg'
+# Use sweet alert
+gem 'sweetalert2'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

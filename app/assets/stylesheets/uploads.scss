@@ -1,3 +1,101 @@
 // Place all the styles related to the Uploads controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ol.breadcrumb {
+  box-shadow: 1px 2px 1px #888888;
+}
+
+.uploads-page-content {
+  .uploads-info-bar {
+    text-align: center;
+    margin: 0 15px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.form {
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: 2px solid lightgrey;
+  box-shadow: 1px 2px 1px #888888;
+
+  input:not(.actions>p) {
+    width: 100%;
+  }
+
+  .field {
+    margin-bottom: 15px;
+
+    label {
+      margin: 0;
+      font-size: 0.8em;
+    }
+  }
+
+  p {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .actions {
+    margin-top: 15px;
+    text-align: center;
+
+    input {
+      width: 10em;
+    }
+  }
+}
+
+.upload-form {
+  max-width: 250px;
+}
+
+.existing-files-container {
+  margin: 0 10px;
+  padding: 10px;
+  border: 2px solid lightgrey;
+  border-radius: 5px;
+  box-shadow: 1px 2px 1px #888888;
+}
+
+.upload-list-file-container {
+  background-color: lightgrey;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid grey;
+  box-shadow: 1px 2px 1px #888888;
+  
+  p {
+    max-width: 250px;
+    word-wrap: break-word;
+  }
+}
+
+.card {
+  margin: 10px;
+  background-color: lightgrey;
+  box-shadow: 1px 2px 1px #888888;
+
+  .card-img-top {
+    object-position: center;
+    width: 100%;
+    height: 150px;
+  }
+
+  .card-body {
+    padding: 10px;
+    
+    .card-title, .card-text {
+      margin: 0;
+      font-family: $primary-font !important;
+    }
+  }
+
+  .card-actions a {
+    font-size: 0.7em;
+  }
+}
