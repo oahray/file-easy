@@ -13,7 +13,7 @@
       <p>Description: <%= @upload.about %></p>
       <p>
         <small class="text-muted"> Created at </small>
-        <%= @upload.created_at.strftime("%-I:%M %P (%B %m, %Y)") %> <small class="text-muted"> and last updated at </small><%= @upload.updated_at.strftime("%-I:%M %P (%B %m, %Y)") %>
+        <%= @upload.created_at.utc.getlocal.strftime("%-I:%M %P (%B %m, %Y)") %> <small class="text-muted"> and last updated at </small><%= @upload.updated_at.utc.getlocal.strftime("%-I:%M %P (%B %m, %Y)") %>
       </p>
     </div>
 

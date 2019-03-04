@@ -8,10 +8,10 @@
     </p>
     <p class="card-text">
     <small class="text-muted">Description: </small> 
-    <% if upload.about %>
+    <% if upload.about.present? %>
       <%= upload.about %>
     <% else %>
-      This upload has no description.
+      <small class="text-muted">This upload has no description.</small> 
     <% end %>
     </p>
 
