@@ -4,7 +4,7 @@ class UploadsController < ApplicationController
   before_action :confirm_files_attached, only: %i[create]
 
   def index
-    @uploads = Upload.all
+    @uploads = current_user.uploads
   end
 
   def show; end
